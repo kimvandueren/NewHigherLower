@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.support.design.widget.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,11 +92,15 @@ public class HigherLower extends AppCompatActivity {
         previousThrow = diceIndexList.get(diceIndexList.size() - 2);
 
         if (GuessCorrect(higherButton, currentThrow, previousThrow) == true) {
+            Snackbar snackbar = Snackbar.make(imageView, "Correct", Snackbar.LENGTH_LONG);
+            snackbar.show();
             currentScore++;
             if (currentScore > highScore) {
                 highScore = currentScore;
             }
         } else {
+            Snackbar snackbar = Snackbar.make(imageView, "Wrong", Snackbar.LENGTH_LONG);
+            snackbar.show();
             currentScore = 0;
             historyStringList.clear();
         }
